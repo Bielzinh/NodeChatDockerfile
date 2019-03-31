@@ -1,5 +1,12 @@
 # simple-chat
-A simple chat application in nodejs and mongodb
+Chat simples com Node, MongoDB e Dockerfile
 
-Read
-https://medium.com/@amkurian/simple-chat-application-in-node-js-using-express-mongoose-and-socket-io-ee62d94f5804
+# Start application
+navegar até dentro da aplicação
+
+# 1 -
+docker build -t aplicacaochat .
+
+# 2 -
+docker run -p 3000:3000 -d aplicacaochat
+
