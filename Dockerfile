@@ -11,7 +11,6 @@ COPY . .
 #Expõe a porta 3000 da aplicação
 EXPOSE 3000
 # Rodar a aplicação, iniciando pelo arquivo server.js
-CMD [ "node", "server.js" ]
 
 
 
