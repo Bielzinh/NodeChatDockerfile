@@ -9,7 +9,7 @@ RUN npm install
 #copia toda a aplicação para a nossa pasta criada acima(wordir)
 COPY . .
 #Expõe a porta 3000 da aplicação
-EXPOSE ,e3000
+EXPOSE 3000
 # Rodar a aplicação, iniciando pelo arquivo server.js
 CMD ["node", "server.js"]
 
