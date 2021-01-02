@@ -1,5 +1,5 @@
 #Imagem do node, latest significa a ultima versão
-FROM node:latest
+FROM node:11
 # criando um diretório para o container, tudo que acontecer na aplicação vai ficar aqui, inclusive a aplicação
 WORKDIR /usr/src/app
 #copia o package json para a pasta criada para o container acima(workdir)
