@@ -32,12 +32,9 @@ metadata:
   name: service-app
   namespace: app1
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 3000
-      targetPort: 3000
-      protocol: TCP
-  type: NodePort
   selector:
     app.kubernetes.io/name: app1
 
