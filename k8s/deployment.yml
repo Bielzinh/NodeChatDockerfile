@@ -34,7 +34,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 80
+    - port: 3000
       targetPort: 3000
       protocol: TCP
   type: NodePort
@@ -48,7 +48,7 @@ kind: Ingress
 metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
+    alb.ingress.kubernetes.io/listen-ports: 3000
     external-dns.alpha.kubernetes.io/hostname: node.dev.ezops.com.br
     kubernetes.io/ingress.class: alb
   name: app1
