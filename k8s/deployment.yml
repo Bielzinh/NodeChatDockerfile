@@ -39,7 +39,7 @@ spec:
       protocol: TCP
   type: NodePort
   selector:
-    app.kubernetes.io/name: app
+    app.kubernetes.io/name: app1
 
 ---
 
@@ -48,23 +48,21 @@ kind: Ingress
 metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/listen-ports: 3000
-    external-dns.alpha.kubernetes.io/hostname: node.dev.ezops.com.br
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
+    external-dns.alpha.kubernetes.io/hostname: service-app01.yourdomain.cloud
+    alb.ingress.kubernetes.io/target-type: instance
     kubernetes.io/ingress.class: alb
-  name: app1
+  name: app01
   namespace: app1
 spec:
-
-  defaultBackend:
-    service:
-      name: node
-      port:
-        number: 3000  
   rules:
-  - host: node.dev.ezops.com.br
-    http:
+  - http:
       paths:
-      - backend:
-          serviceName: service-app
-          servicePort: 3000
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: service-app
+            port:
+              number: 3000
 
