@@ -59,6 +59,6 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: app1
+          serviceName: service-app
           servicePort: 3000
 
