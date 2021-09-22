@@ -55,6 +55,11 @@ metadata:
   namespace: app1
 spec:
   rules:
+  defaultBackend:
+    service:
+      name: node
+      port:
+        number: 3000  
   - host: node.dev.ezops.com.br
     http:
       paths:
