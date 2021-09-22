@@ -43,17 +43,22 @@ spec:
 
 ---
 
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: my-ingress
   annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
+    external-dns.alpha.kubernetes.io/hostname: node.dev.ezops.com.br
     kubernetes.io/ingress.class: alb
+  name: app1
+  namespace: app1
 spec:
   rules:
-  - http:
+  - host: node.dev.ezops.com.br
+    http:
       paths:
-      - path: /
-        backend:
-          serviceName: service-ingress
+      - backend:
+          serviceName: app1
           servicePort: 3000
+
