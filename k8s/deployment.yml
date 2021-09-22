@@ -54,7 +54,6 @@ metadata:
    alb.ingress.kubernetes.io/target-type: instance
    kubernetes.io/ingress.class: alb
  name: app01
-namespace: app1
 spec:
  rules:
  - http:
