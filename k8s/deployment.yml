@@ -32,29 +32,28 @@ metadata:
   name: service-app
   namespace: app1
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
     - port: 3000
-#       targetPort: 3000
-#       protocol: TCP
-#   type: NodePort
-#   selector:
-#     app.kubernetes.io/name: app
+      targetPort: 3000
+      protocol: TCP
+  type: NodePort
+  selector:
+    app.kubernetes.io/name: app
 
 ---
 
-apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: minimal-ingress
+  name: my-ingress
+  annotations:
+    kubernetes.io/ingress.class: alb
 spec:
   rules:
   - http:
       paths:
       - path: /
-        pathType: Prefix
         backend:
-          service:
-            name: test
-            port:
-              number: 80
+          serviceName: service-ingress
+          servicePort: 3000
