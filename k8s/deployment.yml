@@ -29,14 +29,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/listen-ports: 3000
+    external-dns.alpha.kubernetes.io/hostname: service-app01.yourdomain.cloud
+    alb.ingress.kubernetes.io/target-type: instance
+    kubernetes.io/ingress.class: alb
   name: service-app
   namespace: app1
- annotations:
-   alb.ingress.kubernetes.io/scheme: internet-facing
-   alb.ingress.kubernetes.io/listen-ports: 3000
-   external-dns.alpha.kubernetes.io/hostname: service-app01.yourdomain.cloud
-   alb.ingress.kubernetes.io/target-type: instance
-   kubernetes.io/ingress.class: alb
 spec:
   type: LoadBalancer
   ports:
